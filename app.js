@@ -39,7 +39,7 @@ app.use(session({
   resave: true,
   rolling: true,
   cookie: {
-	 expires: 20 * 1000
+	 expires: 1800000
   }
 }))
 
