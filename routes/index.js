@@ -2,10 +2,11 @@ var express = require('express');
 var router = express.Router();
 var Auth = require('./auth.service');
 
-var connection = require('../connection');
+//var connection = require('../connection');
 
 var obj = {};
 router.get('/', Auth.isUserAuthenticated, function(req, res, next) {
+	return res.send('hello');
     //connection.acquire(function (err, con) {
 		//console.log(err);
         connection.query('SELECT * FROM users', function (err, rows) {
