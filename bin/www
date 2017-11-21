@@ -1,0 +1,105 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+//Besides resolving modules from within the node_modules directories, 
+//we can also place the module anywhere we want and require it with 
+//either relative paths (./ and ../) or with absolute paths starting with /
+//    ./ is the the folder that the working file is in:
+//  ../ means go up a path
+var app = require('../app');//------------- IMPORTS APP FILE( maps to app.js or app/index.js both)
+
+var debug = require('debug')('expgr:server');
+
+//When we require a 'find-me' module, without specifying a path:
+/*Node will look for find-me.js(or find-me/index.js)in all the paths specified by module.paths — in order.
+[ 'F:\\node\\expgr\\repl\\node_modules',
+  'F:\\node\\expgr\\node_modules',
+  'F:\\node\\node_modules',
+  'F:\\node_modules',
+  'C:\\Users\\welcome\\.node_modules',
+  'C:\\Users\\welcome\\.node_libraries',
+  'C:\\Program Files\\lib\\node' ] */
+var http = require('http');
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+var port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
+
+/**
+ * Create HTTP server.
+ */
+
+var server = http.createServer(app);
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var bind = typeof port === 'string'
+    ? 'Pipe ' + port
+    : 'Port ' + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+}
