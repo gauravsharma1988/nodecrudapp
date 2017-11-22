@@ -10,7 +10,7 @@
 //  ../ means go up a path
 var app = require('../app');//------------- IMPORTS APP FILE( maps to app.js or app/index.js both)
 
-var debug = require('debug')('expgr:server');
+var debug = require('debug')('nodecrudapp:server');
 
 //When we require a 'find-me' module, without specifying a path:
 /*Node will look for find-me.js(or find-me/index.js)in all the paths specified by module.paths — in order.
