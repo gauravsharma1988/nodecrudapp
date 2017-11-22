@@ -13,7 +13,7 @@ router.post('/', function(req, res) {
 	}
 	//console.log("SELECT id FROM `login` WHERE username = '"+req.body.username+" and password = '"+req.body.password+"'");
 	
-	if(req.body || req.body.length !== 0) {	
+	/*if(req.body || req.body.length !== 0) {	
 			connection.query("SELECT id FROM `login` WHERE username = '"+req.body.username+"' and password = '"+req.body.password+"'", function (err, rows) {
 				if(err) throw err;
 				if(rows.length){
@@ -25,7 +25,7 @@ router.post('/', function(req, res) {
 				}
 				
 			});
-	}					
+	}*/					
 });
 
 router.get('/', function(req, res, next) {
