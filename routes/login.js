@@ -1,19 +1,17 @@
 var express = require('express');
 var router = express.Router();
 
-//var connection = require('../connection');
+var connection = require('../connection');
 var obj = {};
 
 router.post('/', function(req, res) {
-	return res.send('working fine');
-	
 	if(req.session.login_user)
 	{
 	  return res.redirect('/'); 
 	}
 	//console.log("SELECT id FROM `login` WHERE username = '"+req.body.username+" and password = '"+req.body.password+"'");
 	
-	/*if(req.body || req.body.length !== 0) {	
+	if(req.body || req.body.length !== 0) {	
 			connection.query("SELECT id FROM `login` WHERE username = '"+req.body.username+"' and password = '"+req.body.password+"'", function (err, rows) {
 				if(err) throw err;
 				if(rows.length){
@@ -25,7 +23,7 @@ router.post('/', function(req, res) {
 				}
 				
 			});
-	}*/					
+	}					
 });
 
 router.get('/', function(req, res, next) {

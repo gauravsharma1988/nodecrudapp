@@ -8,14 +8,13 @@ var session = require('express-session');
 var flash = require('connect-flash');
 
 
-/*var index = require('./routes/index');
+var index = require('./routes/index');
 var users = require('./routes/users');
 var add_customer = require('./routes/add_customer');
 var delete_customer = require('./routes/delete_customer');
 var edit_customer = require('./routes/edit_customer');
-*/
 var login = require('./routes/login');
-//var logout = require('./routes/logout');
+var logout = require('./routes/logout');
 
 
 
@@ -54,14 +53,14 @@ app.use(function(req, res, next){
     next();
 });
 
-//app.use('/', index);
+app.use('/', index);
 app.use('/login', login);
-/*app.use('/users', users);
+app.use('/users', users);
 app.use('/add_customer', add_customer);
 app.use('/delete_customer', delete_customer);
 app.use('/edit_customer', edit_customer);
 app.use('/logout', logout);
-*/
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
