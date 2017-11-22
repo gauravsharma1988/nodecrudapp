@@ -1,10 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
-var connection = require('../connection');
+//var connection = require('../connection');
 var obj = {};
 
 router.post('/', function(req, res) {
+	return res.send('working fine');
+	
 	if(req.session.login_user)
 	{
 	  return res.redirect('/'); 
